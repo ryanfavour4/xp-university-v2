@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>XP CollegePortal - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="../../../Assets/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link href="../../../Assets/css/sb-admin-2.min.css" rel="stylesheet" />
+
+    <!-- //? LOAD ALL COMPONENTS TO FROM COMPONENTS JS -->
+    <script src="../../components/components.js"></script>
+
+    <!-- Custom styles for this template-->
+  </head>
+
+  <body id="page-top">
+    <div class="loading_screen d-none" id="loading_screen">
+      <div
+        class="bg-dark-fade-7 text-primary text-5xl w-100 position-fixed h-100 z-999 text-center d-flex align-items-center justify-content-center"
+      >
+        <div class="spinner-border spinner-border-lg" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- //? LOAD SIDEBAR COMPONENT -->
+      <!-- Sidebar -->
+      <div id="sidebar"></div>
+      <!-- End of Sidebar -->
+      <!-- //? LOAD SIDEBAR COMPONENT -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Modal for Faculty -->
+        <div class="modal" tabindex="-1" role="dialog" id="addModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">New Faculty</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="addFacultyForm">
+                  <div class="form-group">
+                    <label for="facultyName">Faculty Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="Name"
+                      id="facultyName"
+                      placeholder="e.g. Faculty of Law"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="code">Code</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="Code"
+                      id="code"
+                      placeholder=" e.g. 02"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="uniqueId">Unique ID</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="UniqueId"
+                      id="uniqueId"
+                      placeholder="e.g LAW10"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        name="Status"
+                        type="checkbox"
+                        id="status"
+                        value="Active"
+                      />
+                      <label class="form-check-label" for="status">
+                        Is active
+                      </label>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary float-right">
+                    Add
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Modal for Faculty -->
+
+        <!-- Modal for Search -->
+        <div class="modal" tabindex="-1" role="dialog" id="searchModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Search</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="searchModalForm">
+                  <div class="form-group">
+                    <label for="facultyName">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="Name"
+                      id="facultyName"
+                      placeholder="e.g. Faculty of Management Science"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        name="Status"
+                        type="checkbox"
+                        id="status"
+                        value="Active"
+                      />
+                      <label class="form-check-label" for="status">
+                        Is active
+                      </label>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary float-right">
+                    Search
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Modal for Search -->
+
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <!-- //? LOAD TOPBAR COMPONENT -->
+          <div id="topbar"></div>
+          <!-- //? LOAD TOPBAR COMPONENT -->
+          <!-- End of Topbar -->
+
+          <!-- Begin  Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Faculties</h1>
+              <button
+                data-toggle="modal"
+                data-target="#addModal"
+                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+              >
+                <i class="fas fa-plus fa-sm text-white-50 mr-2"></i> Add Faculty
+              </button>
+
+              <!-- Search form -->
+              <button
+                data-toggle="modal"
+                data-target="#searchModal"
+                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+              >
+                <i class="fas fa-search fa-sm text-white-50 mr-3"></i>Search
+              </button>
+
+              <!-- End of search bar -->
+            </div>
+            <div class="container-fluid">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">UniqueId</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <!-- 
+                  -------------------------------------------------\
+                  All faculties will be loaded here dynamically        >
+                  -------------------------------------------------/
+                 -->
+                </tbody>
+              </table>
+            </div>
+            <!-- Content Row -->
+            <div class="row"></div>
+
+            <!-- Content Row -->
+            <div class="row"></div>
+          </div>
+        </div>
+        <!-- End of Main Page Content -->
+
+        <!-- //? LOAD footer COMPONENT -->
+        <!-- Footer -->
+        <div id="footer"></div>
+        <!-- End of Footer -->
+        <!-- //? LOAD footer COMPONENT -->
+
+      </div>
+
+      <!-- End of Content Wrapper -->
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../../../Assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../../../Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../../../Assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../../../Assets/js/sb-admin-2.min.js"></script>
+
+    <!-- Get Axios library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- My own js file -->
+  </body>
+</html>
