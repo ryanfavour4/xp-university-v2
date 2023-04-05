@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>XP CollegePortal - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="../Assets/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <script async src="./js/components.js"></script>
+
+    <!-- Custom styles for this template-->
+    <link href="../Assets/css/sb-admin-2.min.css" rel="stylesheet" />
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- //? LOAD SIDEBAR COMPONENT -->
+      <!-- Sidebar -->
+      <div id="sidebar"></div>
+      <!-- End of Sidebar -->
+      <!-- //? LOAD SIDEBAR COMPONENT -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Modals for Department -->
+        <!-- Add Department -->
+        <div class="modal" tabindex="-1" role="dialog" id="addModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">New Department</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="addDepartmentForm" onsubmit="addDepartment(event)">
+                  <div class="form-group">
+                    <label for="facultyName">Faculty Name</label>
+                    <select
+                      class="form-control facultySelect"
+                      name="FacultyId"
+                      id="facultyName"
+                    >
+                      <option value="">Select Faculty</option>
+                      <!-- 
+                      Options Go here
+                     -->
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="departmentName">Department Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="Name"
+                      id="departmentName"
+                      placeholder="e.g. Department of English Education"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="code">Code</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="Code"
+                      id="code"
+                      placeholder=" e.g. 04"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="uniqueId">Unique ID</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="UniqueId"
+                      id="uniqueId"
+                      placeholder="e.g g8yu8"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        name="Status"
+                        type="checkbox"
+                        id="status"
+                        value="Active"
+                      />
+                      <label class="form-check-label" for="status">
+                        Is active
+                      </label>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary float-right">
+                    Add
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal" tabindex="-1" role="dialog" id="editModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Edit Department</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="editForm">
+                  <!-- 
+                    Edit form is pre-filled with the data of the department to be edited
+                    The data should be retrieved from the database
+                   -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal" tabindex="-1" role="dialog" id="searchModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Search Departments</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="searchForm" onsubmit="search(event)">
+                  <div class="form-group">
+                    <label for="facultyName">Faculty Name</label>
+                    <select
+                      class="form-control facultySelect"
+                      name="FacultyId"
+                      id="sfacultyName"
+                    >
+                      <option value="">Select Faculty</option>
+                      <!-- 
+                      Options Go here
+                     -->
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="departmentName">Department Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="Name"
+                      id="departmentName"
+                      placeholder="e.g. Department of History"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" name="Status" id="status">
+                      <option value="1">Active</option>
+                      <option value="0">Inactive</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary float-right">
+                    Search
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Modal for Department -->
+
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <!-- //? LOAD TOPBAR COMPONENT -->
+          <div id="topbar"></div>
+          <!-- //? LOAD TOPBAR COMPONENT -->
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Departments</h1>
+
+              <!-- TODO: Add functionality to button -->
+              <div>
+                <button
+                  data-toggle="modal"
+                  data-target="#addModal"
+                  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                >
+                  <i class="fas fa-plus fa-sm text-white-50"></i>
+                  New
+                </button>
+                <button
+                  data-toggle="modal"
+                  data-target="#searchModal"
+                  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                >
+                  <i class="fas fa-search fa-sm text-white-50"></i>
+                  Search
+                </button>
+                <button
+                  id="reset-btn"
+                  onclick="reset()"
+                  class="d-none btn btn-sm btn-secondary shadow-sm"
+                >
+                  <i class="fas fa-refresh fa-sm text-white-50"></i>
+                  Reset
+                </button>
+              </div>
+            </div>
+
+            <div class="container-fluid" id="container-table-wrap">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Faculty</th>
+                    <th scope="col">UniqueId</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <!-- 
+                  -------------------------------------------------\
+                  All departments will be loaded here dynamically        >
+                  -------------------------------------------------/
+                 -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- End of Main Content -->
+
+       
+       <!-- //? LOAD footer COMPONENT -->
+        <!-- Footer -->
+        <div id="footer"></div>
+        <!-- End of Footer -->
+        <!-- //? LOAD footer COMPONENT -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="../Assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="../Assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../Assets/js/sb-admin-2.min.js"></script>
+
+    <!-- Get Axios library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- My own js file -->
+    <script src="./js/Validate.js"></script>
+    <script src="./js/department.js"></script>
+  </body>
+</html>
